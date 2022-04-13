@@ -1,0 +1,180 @@
+body{
+
+	margin: 0px;
+	padding: 0px; 
+
+}
+
+@font-face {
+  font-family: "SF Pro";
+  src: url("/fonts/SF-Pro-Text-Semibold.otf") format("otf"),
+       url("/fonts/SF-Pro-Text-Light.otf") format("otf"),
+       url("/fonts/SF-Pro-Text-Medium.otf") format("otf");
+}
+
+
+.navSectionContainer{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.logoContainer{
+
+	height: 50px;
+	width: 200px;
+	margin-top: 60px;
+	margin-left: 100px;	
+
+}
+
+.logoContainer img{
+	height: 25px; 
+	width: 25px;
+	position: relative;
+	top:50%;
+	transform: translateY(-80%);
+}
+
+.logoContainer span{
+
+font-family: 'Lato', sans-serif;
+font-size: 15px;
+position: relative;
+line-height: 50px;
+margin-left: 10%;
+letter-spacing: 2px;
+font-weight: 700;
+color: #707070;
+
+}
+
+.navBar{
+
+	display: flex;
+	justify-content: flex-end;
+	margin-right: 5%;
+	
+
+}
+
+.mainNav li {
+
+	list-style: none;
+	margin-top: 70px;
+	float: left;
+	margin-right: 75px;
+	text-align: left;
+	font-family: 'Lato', sans-serif;
+	font-size: 12px;
+	letter-spacing: 1.8px;
+	color: #000000;
+	text-transform: uppercase;
+	opacity: 0.50;
+
+
+}
+.mainNav li a {
+
+text-decoration: none;
+color: #000000;
+
+
+
+}
+
+.mainNav li img{
+
+	height: 15px;
+	width: 15px;
+}
+
+
+
+.contentContainer{
+	display: flex;
+}
+
+
+
+.mainHeading{
+
+font-family: 'Lato', sans-serif;
+font-size: 48px;
+width: 500px;
+letter-spacing: 3px;
+color: #484848;
+text-transform: lowercase;
+opacity: 1;
+font-weight: 600;
+margin-top: 75px;
+margin-left: 250px;
+margin-bottom: 30px;
+
+}
+
+.bodyText{
+
+text-align: left;
+font-family: 'Lato', sans-serif;
+font-size: 15px;
+line-height: 27px;
+letter-spacing: 0.88px;
+font-weight: 300;
+color: #000000;
+opacity: 1;
+width: 375px;
+margin-left: 250px;
+margin-bottom: 30px;
+
+
+}
+
+
+.imageContainer img{
+
+	height: 500px;
+	width: 475px;
+	margin-top: 5%;
+
+}
+
+
+.logIn{
+
+background: transparent linear-gradient(101deg, #1E1EFECE 0%, #5353F8D0 48%, #7272FF 100%) 0% 0% no-repeat padding-box;
+box-shadow: 0px 7px 6px #00000029;
+border-radius: 30px;
+opacity: 1;
+border:none;
+color: #FFFFFF;
+height: 50px;
+width: 160px;
+margin-left: 250px;
+font-family: 'Lato',sans-serif;
+
+}
+
+
+.signUp{
+
+font-family: 'Lato', sans-serif;
+font-weight: 700;
+letter-spacing: 0.70px;
+opacity: 0.8;
+margin-left: 30px;
+font-size: 14px;
+
+
+}
+
+.signUp a{
+	text-decoration: none;
+	color: #000000;
+}
+
+
+
+
+
+

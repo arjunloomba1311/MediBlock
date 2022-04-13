@@ -1,0 +1,285 @@
+body{
+
+	margin: 0px;
+	padding: 0px;
+	
+
+}
+
+@font-face {
+  font-family: "SF Pro";
+  src: url("/fonts/SF-Pro-Text-Semibold.otf") format("otf"),
+       url("/fonts/SF-Pro-Text-Light.otf") format("otf"),
+       url("/fonts/SF-Pro-Text-Medium.otf") format("otf");
+}
+
+.navSectionContainer{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.logoContainer{
+
+	height: 50px;
+	width: 200px;
+	margin-top: 60px;
+	margin-left: 100px;	
+
+}
+
+.logoContainer img{
+	height: 25px; 
+	width: 25px;
+	position: relative;
+	top:50%;
+	transform: translateY(-80%);
+}
+
+.logoContainer span{
+
+font-family: 'Lato', sans-serif;
+font-size: 15px;
+position: relative;
+line-height: 50px;
+margin-left: 10%;
+letter-spacing: 2px;
+font-weight: 700;
+color: #707070;
+text-transform: uppercase;
+
+}
+
+.logoContainerOne .img{
+
+	height: 45px; 
+	width: 45px;
+	position: relative;
+	border-radius: 50%;
+	background-color: #eee;
+	background-size: 45px,45px;
+	
+
+}
+
+.logoContainerOne span{
+
+font-family: 'Lato', sans-serif;
+font-size: 13px;
+position: relative;
+line-height: 50px;
+letter-spacing: 2px;
+font-weight: 700;
+color: #000000;
+text-transform: uppercase;
+top:45%;
+right: 120%;
+
+}
+
+
+
+.contentContainer{
+
+	height: 1vh;
+	width: 100%;
+	display: flex;
+
+
+}
+
+
+
+.ledgerBlock{
+
+	height: 500px;
+	width: 50%;
+	margin-left: 10%;
+	margin-top: 70px;
+	border-radius: 30px;
+	border: solid 2px #eee;
+	
+
+
+}
+
+.ledgerBlockLabel{
+
+	margin-left: 10%;
+	margin-top: 30px;
+	position: absolute;
+	font: normal normal 600 13px/18px Lato;
+	letter-spacing: 2px;
+	color: #707070;
+	text-transform: uppercase;
+	opacity: 1;
+
+}
+
+.addInfoBlock{
+
+	margin-left: 5%;
+	margin-top:50px;
+	width: 40%;
+
+}
+
+.shipmentBlock{
+
+	width: 60%;
+	height: 205px;
+	border-radius: 30px;
+	border: solid 2px #eee;
+	margin-top: 5%;
+
+
+
+
+}
+
+.graphBlock{
+
+	width: 60%;
+	height: 205px;
+	border-radius: 30px;
+	border: solid 2px #eee;
+	margin-top: 12.5%;
+	
+
+}
+
+.shipmentBlockLabel{
+
+
+
+	position: absolute;
+	font: normal normal 600 13px/18px Lato;
+	letter-spacing: 2px;
+	color: #707070;
+	text-transform: uppercase;
+	opacity: 1;
+	margin-top: -10px;
+
+}
+
+.graphBlockLabel{
+
+
+	position: absolute;
+	font: normal normal 600 13px/18px Lato;
+	letter-spacing: 2px;
+	color: #707070;
+	text-transform: uppercase;
+	opacity: 1;
+	margin-top: 25px;
+
+
+
+}
+
+.mainTable{
+	width: 90%;
+	height: 40%;
+	text-align: center;
+	border-collapse: collapse; 
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+
+
+}
+
+
+tr{
+
+	border-bottom: solid 1px #707070;
+	margin-bottom: 300px;
+
+}
+
+td{
+	padding-top: 20px;
+	padding-bottom: 15px;
+}
+
+.dateInfo{
+
+	font-family: 'Lato', sans-serif;
+	font-size: 13px;
+	font-weight: 700;
+}
+
+.dateInfo{
+
+	font-family: 'Lato', sans-serif;
+	font-size: 13px;
+	font-weight: 700;
+}
+
+
+.otherInfo{
+
+	font-family: 'Lato', sans-serif;
+	font-size: 13px;
+	font-weight: 400;
+	color: #7E7E7E;
+
+
+
+}
+
+
+.hidderDiv{
+
+	width: 100%;
+	height: 425px;
+	overflow-y: scroll;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	margin-top: 0px;
+	padding-top: 0px;
+}
+
+.dateText{
+
+text-align: left;
+font-family: SF Pro Text;
+font-size: 65px;
+letter-spacing: 0px;
+color: #000000;
+opacity: 1;
+margin-bottom: 0px;
+margin-top: -25px;
+text-align: center;
+
+}
+
+.containerText{
+
+	margin-top:15%;
+}
+
+.shipmentBlockText{
+
+text-align: center;
+font-family: 'Lato', sans-serif;
+font-size: 13px;
+letter-spacing: 2px;
+color: #707070;
+opacity: 1;
+margin-top: 5px;
+
+
+
+}
+
+.graphBlock img{
+
+	width: 85%;
+	height: 160px;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}

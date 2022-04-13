@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a Medicine</title>
+</head>
+
+<body>
+    <h1>Add A Medicine</h1>
+    <form action="/medicines" method="POST">
+        <div>
+            <label for="name">Medicine Name</label>
+            <input type="text" name="name" id="name" placeholder="Medicine name">
+        </div>
+        <br>
+        <div>
+            <label for="InitialSupplier">Initial Supplier</label>
+            <input type="text" name="InitialSupplier" id="InitialSupplier" placeholder="Initial Supplier">
+        </div>
+        <br>
+        <div>
+            <label for="finalDestination">Destination</label>
+            <input type="text" name="finalDestination" id="finalDestination" placeholder="Destination">
+        </div>
+        <br>
+
+        <button>Submit</button>
+    </form>
+
+    <br>
+
+    <a href="/medicines/">View All Medicines</a>
+
+
+
+</body>
+
+</html>

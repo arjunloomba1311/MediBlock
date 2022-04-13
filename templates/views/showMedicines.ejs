@@ -1,0 +1,226 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<link rel="stylesheet" type="text/css" href="../css/ledgerPage.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+	<div class="navSectionContainer">
+	
+		<div class="logoContainer"> 
+
+			<img src="../img/Icon awesome-link@2x.png">
+			<span>MEDICHAIN</span>
+
+
+		</div>
+
+		<div class="logoContainerOne">
+
+			<span>Arjun Loomba</span> 
+			<div class="img" style="background-image: url('../img/pexels-photo-2014773@2x.png');"></div>
+			
+
+
+		</div>
+
+	</div>
+
+	<div class="contentContainer"> 
+
+		<label class="ledgerBlockLabel">LEDGER</label>
+
+		<div class="ledgerBlock">
+
+			<div class="hidderDiv">
+
+			<table class="mainTable">
+
+				<!-- from tr to tr used to illustrate implementation of loop -->
+				
+                    <% for(let ledgerItem of medicine.ledgerItems) { %>
+
+					<tr>
+						
+						<td class="dateInfo"><%=ledgerItem.date%></td>
+						<td class="otherInfo">2020</td>
+						<td class="otherInfo"><%=ledgerItem.units%></td>
+						<td class="otherInfo"><%=ledgerItem.weight%></td>
+                        <td class="otherInfo"><%=ledgerItem.description%></td>
+
+
+
+					</tr>
+
+                    <% } %>
+<!--  
+					<tr>
+						
+						<td class="dateInfo">29th August</td>
+						<td class="otherInfo">2020</td>
+						<td class="otherInfo">2200 Units</td>
+						<td class="otherInfo">400 Kilograms</td>
+
+
+
+					</tr>
+
+					<tr>
+						
+						<td class="dateInfo">29th August</td>
+						<td class="otherInfo">2020</td>
+						<td class="otherInfo">2200 Units</td>
+						<td class="otherInfo">400 Kilograms</td>
+
+
+
+					</tr>
+
+					<tr>
+						
+						<td class="dateInfo">29th August</td>
+						<td class="otherInfo">2020</td>
+						<td class="otherInfo">2200 Units</td>
+						<td class="otherInfo">400 Kilograms</td>
+
+
+
+					</tr>
+					
+					
+					<tr>
+						
+						<td class="dateInfo">29th August</td>
+						<td class="otherInfo">2020</td>
+						<td class="otherInfo">2200 Units</td>
+						<td class="otherInfo">400 Kilograms</td>
+
+
+
+					</tr>
+					
+					
+					<tr>
+						
+						<td class="dateInfo">29th August</td>
+						<td class="otherInfo">2020</td>
+						<td class="otherInfo">2200 Units</td>
+						<td class="otherInfo">400 Kilograms</td>
+
+
+
+					</tr>
+					
+					
+					<tr>
+						
+						<td class="dateInfo">29th August</td>
+						<td class="otherInfo">2020</td>
+						<td class="otherInfo">2200 Units</td>
+						<td class="otherInfo">400 Kilograms</td>
+
+
+
+					</tr>
+
+										<tr>
+						
+						<td class="dateInfo">29th August</td>
+						<td class="otherInfo">2020</td>
+						<td class="otherInfo">2200 Units</td>
+						<td class="otherInfo">400 Kilograms</td>
+
+
+
+					</tr>
+					
+					
+										<tr>
+						
+						<td class="dateInfo">29th August</td>
+						<td class="otherInfo">2020</td>
+						<td class="otherInfo">2200 Units</td>
+						<td class="otherInfo">400 Kilograms</td>
+
+
+
+					</tr>
+					
+										<tr>
+						
+						<td class="dateInfo">29th August</td>
+						<td class="otherInfo">2020</td>
+						<td class="otherInfo">2200 Units</td>
+						<td class="otherInfo">400 Kilograms</td>
+
+
+
+					</tr>
+
+											<tr>
+						
+						<td class="dateInfo">29th August</td>
+						<td class="otherInfo">2020</td>
+						<td class="otherInfo">2200 Units</td>
+						<td class="otherInfo">400 Kilograms</td>
+
+
+
+					</tr> -->
+					
+			</table>
+
+		</div>
+
+		</div>
+
+		<a href="/medicines/<%=medicine._id%>/ledgerItems/new">Add a Ledger Entry</a>
+        <br>
+        <a href="/medicines">All Medicines</a>    
+
+
+		<div class="addInfoBlock">
+
+			<label class="shipmentBlockLabel">REMINDERS</label>
+
+			<div class="shipmentBlock">
+
+				<div class="containerText"> 
+				<h2 class="dateText">02</h2>
+				<h2 class="dateText">30</h2>
+				</div>
+				<p class="shipmentBlockText">NEXT SHIPMENT</p>
+
+			</div>
+
+			<label class="graphBlockLabel">RANDOM STUFF</label>
+
+			<div class="graphBlock">
+
+				<img src="../img/Line chart@2x.png">
+
+			</div>
+			
+		</div>
+
+
+
+
+
+	</div>	
+
+
+
+</body>
+
+</html>
