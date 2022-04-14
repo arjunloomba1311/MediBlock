@@ -26,4 +26,14 @@ const medicineSchema = new Schema({
 
 const Medicine = mongoose.model('Medicine', medicineSchema)
 
+//delete all associated ledger entries if a shipment is removed
+// this function still requires testing - 
+medicineSchema.post('findOneAndDelete', async function (medicine) {
+    if (medicine.ledgerItems.length) {
+        const res = await LedgerItem.deleteMany({ _id: { $in: medicine.ledgerItems } })
+        console.log(res);
+    }
+})
+
+
 module.exports = Medicine;
