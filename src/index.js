@@ -10,18 +10,18 @@ const LedgerItem = require('./models/ledger')
 const { findByIdAndDelete } = require('./models/user')
 
 //get blockchain data from solidity Interactor.js
-const solidityInteractor = require('../solidityInteractor')
+const solidityInteractor = require('../interactors/rawMaterialInteractor')
 
-const solidity = async (weight) => {
+const solidity = async (weight, qty) => {
     let t_checker = new solidityInteractor('86cf1ed0601d2a2c431e4b47617971aa18c9a03863565785ab40a4addd0dc563', '"0x4113E780A80D5fB67c8E1440755FeF3ad8ac50f8"')
-    await t_checker.manipulateRaw(20, 20)
+    await t_checker.manipulateRaw(weight, qty)
     await t_checker.getRaw()
     // await t_checker.checkBlock()
     // await t_checker.assignData(weight)
     // await t_checker.getData()
 }
 
-solidity(50)
+solidity(50, 50)
 
 // let t_checker = new solidityInteractor('86cf1ed0601d2a2c431e4b47617971aa18c9a03863565785ab40a4addd0dc563', '"0x4113E780A80D5fB67c8E1440755FeF3ad8ac50f8"')
 //End of solidity part
@@ -95,11 +95,11 @@ app.get('/medicines/:id', async (req, res) => {
     res.render('showMedicines', {medicine})
 })
 
-app.post('/medicines', async (req, res) => {
-    const medicine = new Medicine(req.body)
-    await medicine.save()
-    res.redirect('/medicines')
-})
+// app.post('/medicines', async (req, res) => {
+//     const medicine = new Medicine(req.body)
+//     await medicine.save()
+//     res.redirect('/medicines')
+// })
 
 //Ledger Routes:
 
@@ -119,6 +119,8 @@ app.get('/medicines/:id/ledgerItems/new', async (req, res) => {
 })
 
 app.post('/medicines/:id/ledgerItems', async (req, res) => {
+
+        console.log('here')
     
         const _id = req.params.id;
         const tempMedicine = await Medicine.findById(_id);
@@ -130,7 +132,19 @@ app.post('/medicines/:id/ledgerItems', async (req, res) => {
         await ledgerItem.save();
 
         const medicines = await Medicine.find({})
-        res.render('medicines', {medicines})
+
+
+        const _weight = req.body.weight;
+        const _units = req.body.units;
+        console.log({
+            weight: weight, 
+            units: units,
+        })
+
+        solidity(_weight, _units)
+    
+        
+        res.redirect('/medicines')
 })
 
 app.delete('/ledgerItems/:id', async (req, res) => {

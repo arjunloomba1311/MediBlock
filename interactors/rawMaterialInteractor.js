@@ -1,8 +1,8 @@
 //projectID - 388451141be7493e90cfba97529d616e
 
 const Web3 = require('web3')
-const VendingMachine = require('./build/contracts/VendingMachine.json')
-const rawMaterial = require('./build/contracts/RawMaterial.json')
+const VendingMachine = require('../build/contracts/VendingMachine.json')
+const rawMaterial = require('../build/contracts/RawMaterial.json')
 
 class solidityInteractor {
     web3;
@@ -29,7 +29,7 @@ class solidityInteractor {
 
         console.log(addresses)
 
-        await this.contract.methods.update(addresses[0], weight, qty).send({
+        await this.contract.methods.update(addresses[1], weight, qty).send({
             from: addresses[0]
         });
     }
