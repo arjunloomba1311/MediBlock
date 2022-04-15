@@ -15,7 +15,7 @@ class solidityInteractor {
         this.account = account.toLowerCase();
     }
 
-    async assignData() {
+    async assignData(value) {
 
         this.id = await this.web3.eth.net.getId();
         this.deployedNetwork = await VendingMachine.networks[this.id];
@@ -26,7 +26,7 @@ class solidityInteractor {
 
         const addresses = await this.web3.eth.getAccounts();
 
-        await this.contract.methods.setData(80).send({
+        await this.contract.methods.setData(value).send({
             from: addresses[0]
         });
 
@@ -67,7 +67,9 @@ class solidityInteractor {
 
 }
 
-let t_checker = new solidityInteractor('86cf1ed0601d2a2c431e4b47617971aa18c9a03863565785ab40a4addd0dc563', '"0x4113E780A80D5fB67c8E1440755FeF3ad8ac50f8"')
-t_checker.checkBlock()
-t_checker.assignData()
-t_checker.getData()
+module.exports = solidityInteractor;
+
+// let t_checker = new solidityInteractor('86cf1ed0601d2a2c431e4b47617971aa18c9a03863565785ab40a4addd0dc563', '"0x4113E780A80D5fB67c8E1440755FeF3ad8ac50f8"')
+// t_checker.checkBlock()
+// t_checker.assignData()
+// t_checker.getData()

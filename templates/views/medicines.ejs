@@ -1,24 +1,308 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Users</title>
+	
+    <link rel="stylesheet" type="text/css" href="../css/enterInfo.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 </head>
 
 <body>
 
-    <h1>All Medicines</h1>
-    
-    <ul>
-        <% for (let medicine of medicines) { %>
-            <li><a href="/medicines/<%=medicine._id%>"><%= medicine.name %></a> </li>
-            <br>
-        <% }%>
-    </ul>
+<div class="navSectionContainer">
+	
+	<div class="logoContainer"> 
 
-    <a href="/medicines/new">Add Medicine</a>
+		<img src="../img/Icon awesome-link@2x.png">
+		<span>MEDICHAIN</span>
+
+
+	</div>
+
+</div>	
+
+
+<div class="contentContainer">
+	
+
+
+	<div class="existLedgerHolder"> 
+
+
+		<div class="mainContainer">
+			
+			<p class="existEntries">Existing Entries</p>
+			<p class="mainText">Select the entry of the existing medicines to view more details</p>
+
+		</div>
+
+
+		<div class="hiddenDiv">
+			
+			<table class="mainTable">
+
+				<!-- from tr to tr used to illustrate implementation of loop -->
+                    <% for (let medicine of medicines) { %>
+
+
+					<tr>
+						
+						<td class="medInfo" style="text-align: left;"><%= medicine.name %></td>
+						<td class="dateInfo">29th April</td> 
+                        <!-- Arjun task: still need to edit the above td -->
+						<td class="entryInfo"> <%= medicine.ledgerItems.length %> Entries</td>
+						<td class="otherInfo"> <a href="/medicines/<%=medicine._id%>"> View  </a> </td>
+
+
+					</tr>
+
+                    <% }%>
+
+
+					<!-- <tr>
+						
+						<td class="medInfo">Crocin</td>
+						<td class="dateInfo">29th April</td>
+						<td class="entryInfo">18 Entries</td>
+						<td class="otherInfo">View</td>
+
+
+
+					</tr>
+
+
+					<tr>
+						
+						<td class="medInfo">Crocin</td>
+						<td class="dateInfo">29th April</td>
+						<td class="entryInfo">18 Entries</td>
+						<td class="otherInfo">View</td>
+
+
+
+					</tr>
+
+
+					<tr>
+						
+						<td class="medInfo">Crocin</td>
+						<td class="dateInfo">29th April</td>
+						<td class="entryInfo">18 Entries</td>
+						<td class="otherInfo">View</td>
+
+
+
+					</tr>
+
+					<tr>
+						
+						<td class="medInfo">Crocin</td>
+						<td class="dateInfo">29th April</td>
+						<td class="entryInfo">18 Entries</td>
+						<td class="otherInfo">View</td>
+
+
+
+					</tr>
+
+
+					<tr>
+						
+						<td class="medInfo">Crocin</td>
+						<td class="dateInfo">29th April</td>
+						<td class="entryInfo">18 Entries</td>
+						<td class="otherInfo">View</td>
+
+
+
+					</tr>
+
+
+					<tr>
+						
+						<td class="medInfo">Crocin</td>
+						<td class="dateInfo">29th April</td>
+						<td class="entryInfo">18 Entries</td>
+						<td class="otherInfo">View</td>
+
+
+
+					</tr>
+
+
+					<tr>
+						
+						<td class="medInfo">Crocin</td>
+						<td class="dateInfo">29th April</td>
+						<td class="entryInfo">18 Entries</td>
+						<td class="otherInfo">View</td>
+
+
+
+					</tr> -->
+
+			</table>
+
+
+
+
+		</div>
+
+
+	</div>
+
+
+<div class="vl"></div>
+
+
+
+
+<div class="formApplication">
+	
+
+		<div class="mainContainerOne">
+			
+			<p class="addMedicine">Add a Medicine</p>
+			<p class="mainTextOne">Add a new ledger for a medicine. Enter the details below.</p>
+
+		</div>
+
+
+		<div class="formAppContainer">
+			
+            <form action="/medicines" method="POST" class = "form" id = "form">
+  
+  				<input type="text" name="name" placeholder="Medicine Name" class="fields" id="name"><br><br>
+  				<input type="text" name="InitialSupplier" placeholder="Intitial Supplier" class="fieldOne" id="InitialSupplier"><br><br>
+  				<input type="text" name="finalDestination" placeholder="Destination" class="fieldOne" id="finalDestination"><br><br>
+                <button class="submit" id="submit"> submit </button>
+  				<!-- <input type="button" value="Create New Shipment" class="submit" id="submit">  -->
+
+			</form> 
+
+
+
+				<form action="ledgerPage.html" class="formOne" id="formOne">
+  
+  				<input type="text" name="description" placeholder="Description" class="fields"><br><br>
+  				<input type="text" name="date" placeholder="Date" class="fieldOne"><br><br>
+  				<input type="text" name="weight" placeholder="Weight" class="fieldOne"><br><br>
+  				<input type="text" name="units" placeholder="Units" class="fieldOne"><br><br>
+  				<input type="submit" value="Submit" class="submit" id="show">
+
+				</form> 
+
+
+
+			
+
+
+
+					<div class="circleContainer">
+
+						<div class="circleHolder">
+					
+							<div class="circleOne" id="circleOne"></div>
+							<div class="circleTwo" id="circleTwo"></div>
+
+						</div>
+
+
+
+				</div>
+
+		</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+<script type="text/javascript">
+
+ var allInput = $('#name,#InitialSupplier,#finalDestination');	
+	
+$(document).ready(function(){
+
+
+  $("#circleTwo").click(function(){
+
+  	$.each(allInput,function(){
+     //looping through all input assuming u have one form in the page  u can pass form id and grab input too
+    if($(this).val() == ""){
+    alert('empty');
+//do something append error msgs etc
+    } else {
+    $("#form").hide();
+     $("#formOne").show();
+     $("#circleTwo").css("background-color", "#9D9D9D");
+     $("#circleOne").css("background-color", "#D6D6D6");
+    }
+
+    });
+    
+
+
+  });
+  
+
+  $("#circleOne").click(function(){
+    $("#form").show();
+     $("#formOne").hide();
+     $("#circleTwo").css("background-color", "#D6D6D6");
+     $("#circleOne").css("background-color", "#9D9D9D");
+
+  });
+
+   $("#submit").click(function(){
+
+   	    $.each(allInput,function(){
+     //looping through all input assuming u have one form in the page  u can pass form id and grab input too
+    if($(this).val() == ""){
+    alert('empty');
+//do something append error msgs etc
+    } else {
+    $("#form").hide();
+     $("#formOne").show();
+     $("#circleTwo").css("background-color", "#9D9D9D");
+     $("#circleOne").css("background-color", "#D6D6D6");
+    }
+
+    });
+     
+  });
+
+
+});
+
+
+
+
+
+
+</script>
+
 
 
 </body>
+
+
+
+
+
+
+</html>
+
+

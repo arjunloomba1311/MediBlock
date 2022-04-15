@@ -9,6 +9,21 @@ const Medicine = require('./models/medicine')
 const LedgerItem = require('./models/ledger')
 const { findByIdAndDelete } = require('./models/user')
 
+//get blockchain data from solidity Interactor.js
+const solidityInteractor = require('../solidityInteractor')
+
+const solidity = async (weight) => {
+    let t_checker = new solidityInteractor('86cf1ed0601d2a2c431e4b47617971aa18c9a03863565785ab40a4addd0dc563', '"0x4113E780A80D5fB67c8E1440755FeF3ad8ac50f8"')
+    await t_checker.checkBlock()
+    await t_checker.assignData(weight)
+    await t_checker.getData()
+}
+
+solidity(50)
+
+// let t_checker = new solidityInteractor('86cf1ed0601d2a2c431e4b47617971aa18c9a03863565785ab40a4addd0dc563', '"0x4113E780A80D5fB67c8E1440755FeF3ad8ac50f8"')
+//End of solidity part
+
 const app = express()
 app.use(express.json())
 const port = process.env.PORT || 3001
@@ -63,7 +78,7 @@ app.post('/users', async (req, res) => {
 app.get('/medicines', async (req, res) => {
 
         const medicines = await Medicine.find({})
-        res.render('medicines', {medicines})
+        res.render('medicines', {medicines: medicines})
 
 })
 
@@ -72,6 +87,7 @@ app.get('/medicines/new', (req, res) => {
 })
 
 //get specific medicine: 
+
 app.get('/medicines/:id', async (req, res) => {
     const medicine = await Medicine.findById(req.params.id).populate('ledgerItems')
     res.render('showMedicines', {medicine})
@@ -85,7 +101,6 @@ app.post('/medicines', async (req, res) => {
 
 //Ledger Routes:
 
-//this route will only give json output since it's only for testing purposes
 app.get('/ledgerItems', async (req, res) => {
     try {
         const ledgerItems = await LedgerItem.find({})
