@@ -14,9 +14,11 @@ const solidityInteractor = require('../solidityInteractor')
 
 const solidity = async (weight) => {
     let t_checker = new solidityInteractor('86cf1ed0601d2a2c431e4b47617971aa18c9a03863565785ab40a4addd0dc563', '"0x4113E780A80D5fB67c8E1440755FeF3ad8ac50f8"')
-    await t_checker.checkBlock()
-    await t_checker.assignData(weight)
-    await t_checker.getData()
+    await t_checker.manipulateRaw(20, 20)
+    await t_checker.getRaw()
+    // await t_checker.checkBlock()
+    // await t_checker.assignData(weight)
+    // await t_checker.getData()
 }
 
 solidity(50)
