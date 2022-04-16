@@ -1,0 +1,354 @@
+body{
+
+	overflow-y: hidden;
+	
+}
+
+
+
+@font-face {
+  font-family: "SF Pro Text";
+  src: url("/fonts/SF-Pro-Text-Semibold.otf") format("otf"),
+       url("/fonts/SF-Pro-Text-Light.otf") format("otf"),
+       url("/fonts/SF-Pro-Text-Medium.otf") format("otf");
+}
+
+.navSectionContainer{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.logoContainer{
+
+	height: 50px;
+	width: 200px;
+	margin-top: 60px;
+	margin-left: 100px;	
+
+}
+
+.logoContainer img{
+	height: 25px; 
+	width: 25px;
+	position: relative;
+	top:50%;
+	transform: translateY(-80%);
+}
+
+.logoContainer span{
+
+font-family: 'Lato', sans-serif;
+font-size: 15px;
+position: relative;
+line-height: 50px;
+margin-left: 10%;
+letter-spacing: 2px;
+font-weight: 700;
+color: #707070;
+text-transform: uppercase;
+
+}
+
+
+.contentContainer{
+
+	display: flex;
+	width: 100%;
+
+
+}
+.vl{
+
+	  border-left: 1px solid rgba(112, 112, 112, 0.3);
+	  height: 475px;
+	  position: absolute;
+	  left: 50%;
+	  top: 55%;
+	  transform: translate(-50%,-50%);
+
+
+
+}
+
+.formApplication{
+
+	margin-left: 120px;
+	margin-top: -25px;
+}
+
+.mainContainerOne{
+
+	position: absolute;
+	margin-left: 5%;
+	margin-top: 50px;
+}
+
+.addMedicine{
+
+	font-family: SF Pro Text;
+	letter-spacing: 2.12px;
+	color: #272727;
+	opacity: 1;
+	font-weight: 600;
+	font-size: 16px;
+	margin-bottom: 20px;
+}
+
+.mainTextOne{
+
+text-align: left;
+font-family: SF Pro Text;
+line-height: 24px;
+font-weight: 300;
+letter-spacing: 1px;
+color: #000000;
+opacity: 1;
+font-size: 12px;
+width: 300px;
+margin-bottom: 10px;
+
+}
+
+
+.formAppContainer{
+
+	width: 400px;
+	height: 500px;
+	position: absolute;
+	margin-left: 5%;
+}
+
+input{
+
+	height: 40px;
+	width: 95%;
+	background-color: transparent;
+	outline: 0;
+	opacity: 1;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-size: 10px;
+	letter-spacing: 1.5px;
+	text-transform: uppercase;
+	opacity: 0.6;
+	border-collapse: collapse;
+	z-index: 100000;
+
+}
+
+
+input[type="text"]{
+
+  box-sizing: border-box;
+  border: none;
+ border-bottom: solid 1px rgba(112,112,112,0.6);
+
+}
+
+input[type="button"]{
+
+  box-sizing: border-box;
+  border: none;
+ 
+
+}
+
+input[type="submit"]{
+
+  box-sizing: border-box;
+  border: none;
+ 
+
+}
+
+
+.formOne{
+
+	margin-top: 175px;
+	
+}
+
+
+
+input:focus{
+	outline: none;
+}
+
+.submit{
+
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 7px 6px;
+    opacity: 1;
+    color: rgb(255, 255, 255);
+    margin-top: 30px;
+    width: 95%;
+    height: 40px;
+    box-sizing: border-box;
+	border: none;
+    font-family: "SF Pro Text";
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    background: linear-gradient(94deg, rgba(30, 30, 254, 0.808) 0%, rgba(83, 83, 248, 0.816) 48%, rgb(114, 114, 255) 100%) 0% 0% no-repeat padding-box padding-box transparent;
+
+
+
+}
+
+
+
+
+a{
+	text-decoration: none;
+	color: #5757F6;
+}
+
+
+.backgroundDecor img{
+
+	height: 250px;
+	width: 200px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+
+
+.warningContainer img{
+
+	height: 650px;
+	width: 500px;
+	position: absolute;
+	top: 120px;
+	left: -50%;
+
+
+}
+
+.text{
+	display: block;
+}
+
+.openText{
+
+	text-align: center;
+	width: 55%;
+	position: relative;
+	margin-top: 200px;
+	left: 800px;
+
+
+}
+
+
+.openText h2{
+
+	font-family: SF Pro Text ; 
+	font-size: 18px;
+	font-weight: 700;
+	margin-bottom: 0px;
+
+
+
+}
+
+.openText p{
+
+	font-family: SF Pro Text ; 
+	font-size: 13px;
+	font-weight: 300;
+
+
+
+
+}
+
+
+.verifyText{
+
+	text-align: center;
+	width: 55%;
+	position: relative;
+	left: 805px;
+	display: none;
+
+
+
+
+}
+
+.verifyText h2{
+
+	font-family: SF Pro Text; 
+	font-size: 18px;
+	font-weight: 700;
+	margin-bottom: 0px;
+
+
+
+}
+
+.verifyText p{
+
+	font-family: SF Pro Text ; 
+	font-size: 13px;
+	font-weight: 300;
+
+
+
+
+}
+
+.verifyText img{
+	
+	height: 115px;
+	width: 110px;
+	left: 10px;
+
+}
+
+
+
+.wrongText{
+
+	text-align: center;
+	width: 55%;
+	position: relative;
+	left: 780px;
+	display: none;
+
+
+
+
+
+}
+
+.wrongText h2{
+
+	font-family: SF Pro Text ; 
+	font-size: 18px;
+	font-weight: 700;
+	margin-bottom: 0px;
+
+
+
+}
+
+.wrongText p{
+
+	font-family: SF Pro Text ; 
+	font-size: 13px;
+	font-weight: 300;
+
+
+
+
+}
+
+.wrongText img{
+	
+	height: 115px;
+	width: 110px;
+	left: 10px;
+
+}

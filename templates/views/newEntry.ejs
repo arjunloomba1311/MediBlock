@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<link rel="stylesheet" type="text/css" href="/../css/enterLedger.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+
+
+</head>
+<body>
+
+<div class="navSectionContainer">
+	
+	<div class="logoContainer"> 
+
+		<img src="/../img/Icon awesome-link@2x.png">
+		<span>MEDICHAIN</span>
+
+
+	</div>
+
+</div>	
+
+
+		<div class="backgroundDecor">
+	
+			<img src="/../img/Group 140.png">
+
+		</div>
+
+<div class="contentContainer">
+	
+<div class="formApplication">
+	
+
+		<div class="mainContainerOne">
+			
+			<p class="addMedicine">Add a New Ledger</p>
+			<p class="mainTextOne">Add a new ledger for a medicine. Enter the details below.</p>
+
+		</div>
+
+
+		<div class="formAppContainer">
+
+
+				<!-- <form action="ledgerPage.html" class="formOne" id="formOne"> -->
+                <form action="/medicines/<%=medicine._id%>/ledgerItems" method="POST" class="formOne" id="formOne">
+
+  
+  				    <input type="text" name="description" placeholder="Description" class="fields"><br><br>
+  				    <input type="date" name="date" placeholder="Date" class="fieldOne"><br><br>
+  				    <input type="text" name="weight" placeholder="Weight" class="fieldOne"><br><br>
+  				    <input type="text" name="units" placeholder="Units" class="fieldOne"><br><br>
+                    <button class="submit" id="show">Submit</button>
+
+  				    <!-- <input type="submit" value="Submit" class="submit" id="show"> -->
+
+				</form> 
+
+					
+		</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+<div class="vl"></div>
+
+
+
+		<div class="warningContainer">
+			
+
+			
+
+			<div class="openText">
+
+					<img src="/../img/Group 139.png">
+
+					<div class="text">
+				
+					<h2>Ledger Entry</h2>
+					<p>The data was entered in the main ledger</p>
+
+
+					</div>
+
+			</div>
+
+			<div class="verifyText">
+
+					
+					<img src="/../img/accept.png">
+				
+					<h2>Entry Verified</h2>
+					<p>Entry will be added to the main ledger</p>
+
+
+
+
+			</div>
+
+
+			<div class="wrongText">
+
+					
+					<img src="/../img/cross.png">
+				
+					<h2>Entry Incorrect</h2>
+					<p>The data is disruptive. Entry not added to the ledger.</p>
+
+
+
+
+			</div>
+
+
+
+		</div>
+
+
+</div>
+
+
+
+
+
+</body>
+</html>
+
+

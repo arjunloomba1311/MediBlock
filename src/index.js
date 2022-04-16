@@ -134,12 +134,11 @@ app.get('/ledgerItems', async (req, res) => {
 app.get('/medicines/:id/ledgerItems/new', async (req, res) => {
     const _id = req.params.id;
     const medicine = await Medicine.findById(_id)
-    res.render('ledger/newEntry', {medicine})
+    res.render('newEntry', {medicine: medicine})
 })
 
 app.post('/medicines/:id/ledgerItems', async (req, res) => {
 
-        console.log('here')
     
         const _id = req.params.id;
         const tempMedicine = await Medicine.findById(_id);
