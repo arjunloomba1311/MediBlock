@@ -1,6 +1,6 @@
 # LA HACKS SUBMISSION
 
-[View our Devpost submission here][https://google.com]
+[View our Devpost submission here] (https://google.com)
 
 ## CONCEPT
 
