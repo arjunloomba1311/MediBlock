@@ -53,4 +53,9 @@ We started with setting up a backend server using the node/express framework. Th
 
 ## WHAT'S NEXT 
 
+We want to integrate all our functionality into a single QR code: all of the weight, quantity, location checking should be done by a single scan. We also hope to add more parameters and cover a larger percentage of counterfeit goods.
+
 ## APPENDIX
+
+<img width="1196" alt="Screen Shot 2022-04-17 at 9 58 11 AM" src="https://user-images.githubusercontent.com/34513460/163724697-1e1f0e21-ed8a-436f-ac2c-ad17e3c4575e.png">
+
