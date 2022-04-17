@@ -1,6 +1,14 @@
 # LA HACKS SUBMISSION
 
+[View our Devpost submission here][https://google.com]
+
 ## CONCEPT
+
+It was unheard of for vaccines or any other medicines for that matter to go from a factory in one corner of the world to your local pharmacy in less than 2 years. But because of the covid pandemic over the past 36 months, this is exactly what occurred.
+
+Unfortunately, the rush to deliver vaccines and medicines around the world has also created plentiful opportunities for counterfeit drug manufacturers to make a quick buck. 
+
+On a broader scale, The World Health Organization estimates that up to 1% of medicines available in the developed world are likely to be counterfeit. 1% of the medicine market is a lot, and potentially affects hundreds of thousands of lives. In the developing world though, this number can go upto 50%! Imagine having to bet on your life-saving medicine to be authentic and not fake!
 
 ## FLOW OF OUR APPLICATION
 
