@@ -39,7 +39,7 @@ const LedgerSchema = new Schema({
     }, 
     units: {
         type: Number, 
-        default: 2200,
+        required: true,
         validate(value) {
             if (value < 0) {
                 throw new Error("Units can't be negative!")

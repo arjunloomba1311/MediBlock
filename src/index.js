@@ -13,43 +13,47 @@ const LedgerItem = require('./models/ledger')
 const { findByIdAndDelete } = require('./models/user')
 
 //get blockchain data from solidity Interactor.js
-const solidityInteractor = require('../interactors/rawMaterialInteractor')
-const manufacturerInteractor = require('../interactors/manufacturerInteractor')
-const distributorInteractor = require('../interactors/distributorInteractor')
-const pharmacistInteractor = require('../interactors/pharmacistInteractor')
+const rmInteractor = require('../interactors/RawMaterialInteractor')
+const mfInteractor = require('../interactors/ManufacturerInteractor')
+const distInteractor = require('../interactors/DistributorInteractor')
+const pharmaInteractor = require('../interactors/PharmacistInteractor')
 
 const geocode = require('./utils/geocode.js')
+const unitsChecker = require('./utils/unitsChecker')
+const weightChecker = require('./utils/weightChecker')
 const { callbackify } = require('util')
+const { type } = require('express/lib/response')
 
 const solidity_rawMaterial = async (weight, qty) => {
-    let checker = new solidityInteractor('86cf1ed0601d2a2c431e4b47617971aa18c9a03863565785ab40a4addd0dc563', '"0x4113E780A80D5fB67c8E1440755FeF3ad8ac50f8"')
+    let checker = new rmInteractor('0x2Fe76F831b275140710382453A05c6A9e2C74C2D')
     await checker.manipulateRaw(weight, qty)
-    await checker.getRaw()
+    return await checker.getRaw()
 }
 
 const solidity_Manufacturer = async (weight, qty) => {
-    let checker = new manufacturerInteractor('86cf1ed0601d2a2c431e4b47617971aa18c9a03863565785ab40a4addd0dc563', '"0x544370e4a408029AdAb8Be7bF3BCF93ef4902E45"')
+    let checker = new mfInteractor('0x2Fe76F831b275140710382453A05c6A9e2C74C2D')
     await checker.manipulateManufacturer(weight, qty)
-    await checker.getManufacturer()
+    return await checker.getManufacturer()
 }
 
 const solidity_Distributor = async (weight, qty) => {
-    let checker = new distributorInteractor('86cf1ed0601d2a2c431e4b47617971aa18c9a03863565785ab40a4addd0dc563', '"0x544370e4a408029AdAb8Be7bF3BCF93ef4902E45"')
+    let checker = new distInteractor('0x2Fe76F831b275140710382453A05c6A9e2C74C2D')
     await checker.manipulateDistributor(weight, qty)
-    await checker.getDistributor(weight, qty)
+    return await checker.getDistributor(weight, qty)
 }
 
 const solidity_Pharmacist = async (weight, qty) => {
-    let checker = new pharmacistInteractor('86cf1ed0601d2a2c431e4b47617971aa18c9a03863565785ab40a4addd0dc563', '"0x544370e4a408029AdAb8Be7bF3BCF93ef4902E45"')
+    let checker = new pharmaInteractor('0x2Fe76F831b275140710382453A05c6A9e2C74C2D')
     await checker.manipulatePharmacist(weight, qty)
-    await checker.getPharmacist(weight, qty)
+    return await checker.getPharmacist(weight, qty)
     // let checker = new 
 }
 
-solidity_Pharmacist(60, 30)
+// solidity_Pharmacist(60, 30)
 
 // let t_checker = new solidityInteractor('86cf1ed0601d2a2c431e4b47617971aa18c9a03863565785ab40a4addd0dc563', '"0x4113E780A80D5fB67c8E1440755FeF3ad8ac50f8"')
 //End of solidity part
+
 
 const app = express()
 app.use(express.json())
@@ -73,7 +77,7 @@ app.get('/', async (req, res) => {
         _flag = true;
     }
 
-    console.log(currentUserId)
+    // console.log(currentUserId)
     res.render('landingPage', {flag: _flag})
 })
 
@@ -202,7 +206,11 @@ app.get('/medicines/:id', async (req, res) => {
 })
 
 app.post('/medicines', async (req, res) => {
-    const medicine = new Medicine(req.body)
+
+    let {name, InitialSupplier, finalDestination} = req.body;
+
+    const medicine = new Medicine({name, InitialSupplier, finalDestination})
+
     await medicine.save()
     res.redirect('/medicines')
 })
@@ -220,8 +228,9 @@ app.get('/ledgerItems', async (req, res) => {
 
 app.get('/medicines/:id/ledgerItems/new', async (req, res) => {
     const _id = req.params.id;
+    // console.log(_id)
     const medicine = await Medicine.findById(_id)
-    res.render('newEntry', {medicine: medicine})
+    res.render('newEntry', {medicine: medicine, error: false, success: false})
 })
 
 app.post('/medicines/:id/ledgerItems', async (req, res) => {
@@ -229,7 +238,46 @@ app.post('/medicines/:id/ledgerItems', async (req, res) => {
     try {
         const _id = req.params.id;
         const tempMedicine = await Medicine.findById(_id);
-        const {description, date, weight, units} = req.body;
+        let {description, date, weight, units} = req.body;
+
+
+        numLedgerItems = tempMedicine.ledgerItems.length
+        console.log('number of items: ', numLedgerItems)
+
+        if (numLedgerItems > 0) {
+
+            // console.log('number of items in ledger before the new one: ', numLedgerItems)
+
+            lastItemID = tempMedicine.ledgerItems[numLedgerItems - 1]._id
+            lastItem = await LedgerItem.findById(lastItemID)
+            lastItemWeight = lastItem.weight;
+            const isValidWeight = await weightChecker(lastItemWeight, weight);
+
+            if (isValidWeight) {
+                console.log('Its valid!')
+            } else {
+                console.log("It's not valid")
+            }
+
+            if (!(isValidWeight)) {
+                console.log('here')
+                return res.render('newEntry', {medicine: tempMedicine, error: true, success: false})
+            }
+
+            // lastItemUnits = lastItmem.units;
+            // console.log(lastItemUnits)
+            // const isValidUnits = await unitsChecker(lastItemUnits, units)
+
+            // if (isValidUnits) {
+            //     console.log('valid units')
+            // } else {
+            //     console.log('Invalid')
+            // }
+
+            // console.log(isValidWeight)
+        }
+
+
         const ledgerItem = new LedgerItem({description, date, weight, units})
         tempMedicine.ledgerItems.push(ledgerItem)
         ledgerItem.Medicine = tempMedicine;
@@ -242,10 +290,10 @@ app.post('/medicines/:id/ledgerItems', async (req, res) => {
         const _weight = req.body.weight;
         const _units = req.body.units;
 
-        // console.log({
-        //     weight: weight, 
-        //     units: units,
-        // })
+        console.log({
+            weight: weight, 
+            units: units,
+        })
 
         if (currentUserId != -1) {
 
@@ -255,7 +303,7 @@ app.post('/medicines/:id/ledgerItems', async (req, res) => {
                 solidity_rawMaterial(_weight, _units)
             }
 
-            if (user.userType == 'manufacturer') {
+            if (user.userType == 'smanufacturer') {
                 solidity_Manufacturer(_weight, _units)
             }
 
@@ -269,7 +317,7 @@ app.post('/medicines/:id/ledgerItems', async (req, res) => {
 
         }
 
-        res.redirect('/medicines')
+        res.render('newEntry', {medicine: tempMedicine, error: false, success: true})
 
     } catch (e) {
         

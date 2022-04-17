@@ -13,45 +13,6 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-	<script>
-
-
-		// Initialize and add the map
-function initMap() {
-
-
-    // The location of Uluru
-    const uluru = { lat: -25.344, lng: 131.031 };
-	const los_angeles = {lat: <%=latitude%>, lng: <%=longitude%>}
-
-	numLocations = <%=locations.length%>
-
-	<%=locations.forEach((loc) => {
-		console.log(loc)
-	});%>
-
-
-    // The map, centered at Uluru
-    const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 4,
-      center: los_angeles,
-	  keyboardShortcuts: false,
-    });
-    // The marker, positioned at Uluru
-   new google.maps.Marker({
-      position: uluru,
-      map: map,
-    });
-
-	new google.maps.Marker({
-      position: los_angeles,
-      map: map,
-    });
-  }
-  
-  window.initMap = initMap;
-
-	</script>
 
 </head>
 
@@ -186,6 +147,40 @@ function initMap() {
 window.initMap = initMap;
 
 	</script> -->
+
+	<script>
+
+
+		// Initialize and add the map
+		function initMap() {
+
+
+    // The location of Uluru
+    const uluru = { lat: -25.344, lng: 131.031 };
+	const los_angeles = {lat: 34.0522, lng: -118.2437}
+
+    // The map, centered at Uluru
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 4,
+      center: los_angeles,
+	  keyboardShortcuts: false,
+    });
+    // The marker, positioned at Uluru
+   new google.maps.Marker({
+      position: uluru,
+      map: map,
+    });
+
+	new google.maps.Marker({
+      position: los_angeles,
+      map: map,
+    });
+  }
+  
+  window.initMap = initMap;
+
+	</script>
+
 
 
 

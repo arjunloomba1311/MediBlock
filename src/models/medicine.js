@@ -30,7 +30,7 @@ const Medicine = mongoose.model('Medicine', medicineSchema)
 // this function still requires testing - 
 medicineSchema.post('findOneAndDelete', async function (medicine) {
     if (medicine.ledgerItems.length) {
-        const res = await LedgerItem.deleteMany({ _id: { $in: medicine.ledgerItems } })
+        const res = await ledgerItem.deleteMany({ _id: { $in: medicine.ledgerItems } })
         console.log(res);
     }
 })

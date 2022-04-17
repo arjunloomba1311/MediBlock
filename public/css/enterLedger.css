@@ -4,6 +4,11 @@ body{
 	
 }
 
+a {
+	color: #707070;
+	text-decoration: none;
+}
+
 
 
 @font-face {
@@ -162,6 +167,16 @@ input[type="submit"]{
 
 }
 
+input[type="date"]{
+
+	box-sizing: border-box;
+	border:none;
+	border-bottom: solid 1px rgba(112,112,112,0.6);
+	text-indent: 20px;
+   
+  
+  }
+
 
 .formOne{
 
@@ -270,7 +285,7 @@ a{
 	width: 55%;
 	position: relative;
 	left: 805px;
-	display: none;
+	display: block;
 
 
 
@@ -315,11 +330,7 @@ a{
 	width: 55%;
 	position: relative;
 	left: 780px;
-	display: none;
-
-
-
-
+	display: block;
 
 }
 

@@ -21,7 +21,7 @@
 	<div class="logoContainer"> 
 
 		<img src="/../img/Icon awesome-link@2x.png">
-		<span>MEDICHAIN</span>
+		<span> <a href = "/">  MEDICHAIN </a></span>
 
 
 	</div>
@@ -87,21 +87,31 @@
 		<div class="warningContainer">
 			
 
-			
-
 			<div class="openText">
 
 					<img src="/../img/Group 139.png">
 
+					<% if (!(error) && !(success)) { %>
+
+
 					<div class="text">
+
+
 				
 					<h2>Ledger Entry</h2>
 					<p>The data was entered in the main ledger</p>
 
 
+
+
 					</div>
 
+					<% }%>
+
+
 			</div>
+
+	<% if (success && !(error)) { %>
 
 			<div class="verifyText">
 
@@ -111,10 +121,12 @@
 					<h2>Entry Verified</h2>
 					<p>Entry will be added to the main ledger</p>
 
-
-
-
 			</div>
+
+	<% } %>
+	
+	<% if ((error) && !(success)) { %>
+
 
 
 			<div class="wrongText">
@@ -126,9 +138,10 @@
 					<p>The data is disruptive. Entry not added to the ledger.</p>
 
 
-
-
 			</div>
+
+	<% } %>
+
 
 
 

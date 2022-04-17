@@ -1,36 +1,25 @@
-//projectID - 388451141be7493e90cfba97529d616e
-
 const Web3 = require('web3')
-const Manufacturer = require('../build/contracts/Manufacturer.json')
+const manufacturer = require('../build/contracts/Manufacturer.json')
 
-class manufacturerInteractor {
+class ManufacturerInteractor {
     web3;
     account;
-    id;
-    deployedNetwork;
     contract;
 
 
-    constructor(projectId, account) {
-        this.web3 = new Web3(new Web3.providers.HttpProvider('HTTP://127.0.0.1:8545'))
-        this.account = account.toLowerCase();
+    constructor(account){
+        const privateKey = '5f8e2451fb96064a1870d419ee011303af25b018558aabe701496ff27d755a43'
+        const HDWalletProvider = require('@truffle/hdwallet-provider');
+        const provider  = new HDWalletProvider(privateKey,'https://apis.ankr.com/b75f99a3c30a49eabfc57d7a1fb9c00a/acd5628758ba78c1124bc7ad238c75bf/eth/fast/rinkeby')
+        this.web3 = new Web3(provider)
+        this.account = account;
+        this.contract = new this.web3.eth.Contract(manufacturer.abi,'0xa638D066Ef420E90CaCfe79332307B1deE645Eae')
     }
 
     async manipulateManufacturer(weight, qty) {
-        this.id = await this.web3.eth.net.getId();
-        this.deployedNetwork = await Manufacturer.networks[this.id];
-        this.contract = new this.web3.eth.Contract(
-            Manufacturer.abi,
-            this.deployedNetwork.address,
-        )
 
-        const addresses = await this.web3.eth.getAccounts();
+        await this.contract.methods.update(weight,qty).send({from: '0x2Fe76F831b275140710382453A05c6A9e2C74C2D'})
 
-        console.log(addresses)
-
-        await this.contract.methods.update(addresses[1], weight, qty).send({
-            from: addresses[0]
-        });
     }
 
     async getManufacturer() {
@@ -45,4 +34,4 @@ class manufacturerInteractor {
 
 }
 
-module.exports = manufacturerInteractor;
+module.exports = ManufacturerInteractor;

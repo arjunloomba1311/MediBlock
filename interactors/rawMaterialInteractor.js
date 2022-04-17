@@ -1,37 +1,25 @@
-//projectID - 388451141be7493e90cfba97529d616e
-
 const Web3 = require('web3')
-const VendingMachine = require('../build/contracts/VendingMachine.json')
 const rawMaterial = require('../build/contracts/RawMaterial.json')
 
-class solidityInteractor {
+class RawMaterialInteractor {
     web3;
     account;
-    id;
-    deployedNetwork;
     contract;
 
 
-    constructor(projectId, account) {
-        this.web3 = new Web3(new Web3.providers.HttpProvider('HTTP://127.0.0.1:8545'))
-        this.account = account.toLowerCase();
+    constructor(account){
+        const privateKey = '5f8e2451fb96064a1870d419ee011303af25b018558aabe701496ff27d755a43'
+        const HDWalletProvider = require('@truffle/hdwallet-provider');
+        const provider  = new HDWalletProvider(privateKey,'https://apis.ankr.com/b75f99a3c30a49eabfc57d7a1fb9c00a/acd5628758ba78c1124bc7ad238c75bf/eth/fast/rinkeby')
+        this.web3 = new Web3(provider)
+        this.account = account;
+        this.contract = new this.web3.eth.Contract(rawMaterial.abi,'0x2f5231BB2f26e7F6Fe7B6f92C185765f2555BB7E')
     }
 
     async manipulateRaw(weight, qty) {
-        this.id = await this.web3.eth.net.getId();
-        this.deployedNetwork = await rawMaterial.networks[this.id];
-        this.contract = new this.web3.eth.Contract(
-            rawMaterial.abi,
-            this.deployedNetwork.address,
-        )
 
-        const addresses = await this.web3.eth.getAccounts();
+        await this.contract.methods.update(weight,qty).send({from: '0x2Fe76F831b275140710382453A05c6A9e2C74C2D'})
 
-        console.log(addresses)
-
-        await this.contract.methods.update(addresses[1], weight, qty).send({
-            from: addresses[0]
-        });
     }
 
     async getRaw() {
@@ -44,61 +32,6 @@ class solidityInteractor {
         })
     }
 
-    // async assignData(value) {
-
-    //     this.id = await this.web3.eth.net.getId();
-    //     this.deployedNetwork = await VendingMachine.networks[this.id];
-    //     this.contract = new this.web3.eth.Contract(
-    //         VendingMachine.abi,
-    //         this.deployedNetwork.address,
-    //     )
-
-    //     const addresses = await this.web3.eth.getAccounts();
-
-    //     await this.contract.methods.setData(value).send({
-    //         from: addresses[0]
-    //     });
-
-    // }
-
-    // async getData() {
-    //     this.id = await this.web3.eth.net.getId();
-    //     this.deployedNetwork = await VendingMachine.networks[this.id];
-    //     this.contract = new this.web3.eth.Contract(
-    //         VendingMachine.abi,
-    //         this.deployedNetwork.address,
-    //     )
-        
-    //     const result = await this.contract.methods.getBalance().call()
-    //     console.log(result)
-
-    // }
- 
-    // async checkBlock() {
-    //     let block = await this.web3.eth.getBlock('latest');
-    //     // console.log(block)
-    //     let number = block.number;
-    //     console.log('Searching block ' + number);
-
-    //         for (let t_hash of block.transactions) {
-    //             let transaction = await this.web3.eth.getTransaction(t_hash);
-
-    //                 console.log('transaction found on block')
-    //                 // console.log(transaction)
-    //                 console.log(
-    //                     {address: transaction.from, 
-    //                     value: this.web3.utils.fromWei(transaction.value, 'ether'), 
-    //                     timestamp: new Date()}
-    //                     )
-                    
-    //             }
-    // }
-
 }
 
-module.exports = solidityInteractor;
-
-// let t_checker = new solidityInteractor('86cf1ed0601d2a2c431e4b47617971aa18c9a03863565785ab40a4addd0dc563', '"0x4113E780A80D5fB67c8E1440755FeF3ad8ac50f8"')
-// t_checker.checkBlock()
-// t_checker.assignData()
-// t_checker.getData()
+module.exports = RawMaterialInteractor;
