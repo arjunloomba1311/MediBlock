@@ -230,3 +230,19 @@ transform: translate(90%,-50%);
 
 	margin-top: 30px;
 }
+
+.submit{
+box-shadow: rgba(0, 0, 0, 0.16) 0px 7px 6px;
+    opacity: 1;
+    color: rgb(255, 255, 255);
+    margin-top: 30px;
+    width: 95%;
+    height: 40px;
+    box-sizing: border-box;
+	border: none;
+    font-family: "SF Pro Text";
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    background: linear-gradient(94deg, rgba(30, 30, 254, 0.808) 0%, rgba(83, 83, 248, 0.816) 48%, rgb(114, 114, 255) 100%) 0% 0% no-repeat padding-box padding-box transparent;
+}

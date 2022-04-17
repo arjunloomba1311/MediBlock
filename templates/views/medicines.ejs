@@ -18,7 +18,7 @@
 	<div class="logoContainer"> 
 
 		<img src="../img/Icon awesome-link@2x.png">
-		<span>MEDICHAIN</span>
+		<a href="/"><span>MEDICHAIN</span> </a>
 
 
 	</div>
@@ -52,7 +52,7 @@
 					<tr>
 						
 						<td class="medInfo" style="text-align: left;"><%= medicine.name %></td>
-						<td class="dateInfo">29th April</td> 
+						<td class="dateInfo"><%=(new Date(Date.now())).getDate()%> April</td> 
                         <!-- Arjun task: still need to edit the above td -->
 						<td class="entryInfo"> <%= medicine.ledgerItems.length %> Entries</td>
 						<td class="otherInfo"> <a href="/medicines/<%=medicine._id%>"> View  </a> </td>
@@ -62,88 +62,6 @@
 
                     <% }%>
 
-
-					<!-- <tr>
-						
-						<td class="medInfo">Crocin</td>
-						<td class="dateInfo">29th April</td>
-						<td class="entryInfo">18 Entries</td>
-						<td class="otherInfo">View</td>
-
-
-
-					</tr>
-
-
-					<tr>
-						
-						<td class="medInfo">Crocin</td>
-						<td class="dateInfo">29th April</td>
-						<td class="entryInfo">18 Entries</td>
-						<td class="otherInfo">View</td>
-
-
-
-					</tr>
-
-
-					<tr>
-						
-						<td class="medInfo">Crocin</td>
-						<td class="dateInfo">29th April</td>
-						<td class="entryInfo">18 Entries</td>
-						<td class="otherInfo">View</td>
-
-
-
-					</tr>
-
-					<tr>
-						
-						<td class="medInfo">Crocin</td>
-						<td class="dateInfo">29th April</td>
-						<td class="entryInfo">18 Entries</td>
-						<td class="otherInfo">View</td>
-
-
-
-					</tr>
-
-
-					<tr>
-						
-						<td class="medInfo">Crocin</td>
-						<td class="dateInfo">29th April</td>
-						<td class="entryInfo">18 Entries</td>
-						<td class="otherInfo">View</td>
-
-
-
-					</tr>
-
-
-					<tr>
-						
-						<td class="medInfo">Crocin</td>
-						<td class="dateInfo">29th April</td>
-						<td class="entryInfo">18 Entries</td>
-						<td class="otherInfo">View</td>
-
-
-
-					</tr>
-
-
-					<tr>
-						
-						<td class="medInfo">Crocin</td>
-						<td class="dateInfo">29th April</td>
-						<td class="entryInfo">18 Entries</td>
-						<td class="otherInfo">View</td>
-
-
-
-					</tr> -->
 
 			</table>
 
@@ -166,8 +84,8 @@
 
 		<div class="mainContainerOne">
 			
-			<p class="addMedicine">Add a Medicine</p>
-			<p class="mainTextOne">Add a new ledger for a medicine. Enter the details below.</p>
+			<p class="addMedicine">Add a Medicine Shipment</p>
+			<p class="mainTextOne">Add a new ledger entry for a shipment. Enter the details below.</p>
 
 		</div>
 
@@ -188,19 +106,13 @@
 
 				<form action="ledgerPage.html" class="formOne" id="formOne">
   
-  				<input type="text" name="description" placeholder="Description" class="fields"><br><br>
-  				<input type="text" name="date" placeholder="Date" class="fieldOne"><br><br>
-  				<input type="text" name="weight" placeholder="Weight" class="fieldOne"><br><br>
-  				<input type="text" name="units" placeholder="Units" class="fieldOne"><br><br>
-  				<input type="submit" value="Submit" class="submit" id="show">
+  					<input type="text" name="description" placeholder="Description" class="fields"><br><br>
+  					<input type="text" name="date" placeholder="Date" class="fieldOne"><br><br>
+  					<input type="text" name="weight" placeholder="Weight" class="fieldOne"><br><br>
+  					<input type="text" name="units" placeholder="Units" class="fieldOne"><br><br>
+  					<input type="submit" value="Submit" class="submit" id="show">
 
 				</form> 
-
-
-
-			
-
-
 
 					<div class="circleContainer">
 

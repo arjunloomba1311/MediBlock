@@ -156,6 +156,8 @@ window.initMap = initMap;
 
 
     // The location of Uluru
+	const frankfurt = {lat: 50.1109, lng: -8.6821}
+	const shanghai = {lat: 31.2304, lng: 121.4737}
     const uluru = { lat: -25.344, lng: 131.031 };
 	const los_angeles = {lat: 34.0522, lng: -118.2437}
 
@@ -167,14 +169,37 @@ window.initMap = initMap;
     });
     // The marker, positioned at Uluru
    new google.maps.Marker({
-      position: uluru,
+      position: shanghai,
       map: map,
     });
+
+	new google.maps.Marker({
+      position: frankfurt,
+      map: map,
+    });
+
 
 	new google.maps.Marker({
       position: los_angeles,
       map: map,
     });
+
+	const flightPlanCoordinates = [
+		frankfurt,
+		shanghai, 
+		los_angeles,
+  	];
+	
+  	const flightPath = new google.maps.Polyline({
+    	path: flightPlanCoordinates,
+    	geodesic: true,
+    	strokeColor: "#000000",
+    	strokeOpacity: 1.0,
+    	strokeWeight: 2,
+  	});
+
+  flightPath.setMap(map);
+
   }
   
   window.initMap = initMap;
