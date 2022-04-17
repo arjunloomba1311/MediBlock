@@ -21,7 +21,7 @@
 	<div class="logoContainer"> 
 
 		<img src="/../img/Icon awesome-link@2x.png">
-		<span> <a href = "/">  MEDICHAIN </a></span>
+		<a href = "\">  <span style = "color: 707070; text-decoration: none;">  MEDIBLOCK </span> </a>
 
 
 	</div>
@@ -43,7 +43,7 @@
 		<div class="mainContainerOne">
 			
 			<p  class="addMedicine">Add a New Ledger Entry</p>
-			<p  class="mainTextOne">Add a new ledger for a medicine. Enter the details below.</p>
+			<p  class="mainTextOne">Add a new ledger for a shipment. Enter the details below.</p>
 
 		</div>
 
@@ -113,10 +113,14 @@
 
 	<% if (success && !(error)) { %>
 
+
 			<div class="verifyText">
 
-					
+				<a href = "/medicines">
+
 					<img src="/../img/accept.png">
+
+				</a>
 				
 					<h2>Entry Verified</h2>
 					<p>Entry will be added to the main ledger</p>
@@ -131,8 +135,13 @@
 
 			<div class="wrongText">
 
+				<a href = "/medicines">
+
 					
 					<img src="/../img/cross.png">
+
+				</a>
+
 				
 					<h2>Entry Incorrect</h2>
 					<p>The data is disruptive. Entry not added to the ledger.</p>

@@ -50,7 +50,6 @@ const solidity_Pharmacist = async (weight, qty) => {
     // let checker = new 
 }
 
-// solidity_Pharmacist(60, 30)
 
 // let t_checker = new solidityInteractor('86cf1ed0601d2a2c431e4b47617971aa18c9a03863565785ab40a4addd0dc563', '"0x4113E780A80D5fB67c8E1440755FeF3ad8ac50f8"')
 //End of solidity part
@@ -76,8 +75,8 @@ const smtpTransport = nodemailer.createTransport({
     port: 587,
     secure: false, // use TLS
     auth: {
-      user: "aloomba@jpischool.com",
-      pass: "arjun_thegreat",
+      user: process.env.USER,
+      pass: process.env.PASS,
     },
   });
 
@@ -164,6 +163,7 @@ app.get('/medicines/:id', async (req, res) => {
         var lat = 0;
         var long = 0;
 
+        //DOESN'T WORK-
         // request.get(url).on('response', (response) => {
 
         //     const respJSON = JSON.stringify(book)
@@ -181,16 +181,16 @@ app.get('/medicines/:id', async (req, res) => {
             lat =  response.body.features[0].center[1];
             long = response.body.features[0].center[0];
 
-                // obj = {
-                //     latitude, 
-                //     longitude,
-                // }
+                obj = {
+                    latitude, 
+                    longitude,
+                }
 
 
-                // callback(undefined, {
-                //     lat,
-                //     long
-                // })
+                callback(undefined, {
+                    lat,
+                    long
+                })
 
         })
 
@@ -210,9 +210,9 @@ app.get('/medicines/:id', async (req, res) => {
 
             // return obj;
 
-            // coordinates.push(
-            //     obj
-            // )
+            coordinates.push(
+                obj
+            )
     
 
 
@@ -290,18 +290,21 @@ app.post('/medicines/:id/ledgerItems', async (req, res) => {
                 return res.render('newEntry', {medicine: tempMedicine, error: true, success: false})
             }
 
-            // lastItemUnits = lastItmem.units;
-            // console.log(lastItemUnits)
-            // const isValidUnits = await unitsChecker(lastItemUnits, units)
+            lastItemUnits = lastItmem.units;
+            console.log(lastItemUnits)
+            const isValidUnits = await unitsChecker(lastItemUnits, units)
 
-            // if (isValidUnits) {
-            //     console.log('valid units')
-            // } else {
-            //     console.log('Invalid')
-            // }
+            if (isValidUnits) {
+                console.log('valid units')
+            } else {
+                console.log('Invalid')
+            }
 
             // console.log(isValidWeight)
         }
+
+        // solidity_Pharmacist(60, 30)
+
 
 
         const ledgerItem = new LedgerItem({description, date, weight, units})
@@ -328,7 +331,7 @@ app.post('/medicines/:id/ledgerItems', async (req, res) => {
                 solidity_rawMaterial(_weight, _units)
             }
 
-            if (user.userType == 'smanufacturer') {
+            if (user.userType == 'manufacturer') {
                 solidity_Manufacturer(_weight, _units)
             }
 

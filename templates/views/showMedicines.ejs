@@ -20,14 +20,14 @@
 		<div class="logoContainer"> 
 
 			<img src="/../img/Icon awesome-link@2x.png">
-			<span>MEDICHAIN</span>
+			<span>MEDIBLOCK</span>
 
 
 		</div>
 
 		<div class="logoContainerOne">
 
-			<span>Arjun Loomba</span> 
+			<span>Your Profile</span> 
 			<div class="img" style="background-image: url('/../img/pexels-photo-2014773@2x.png');"></div>
 			
 
@@ -98,10 +98,10 @@
 			<div class="shipmentBlock">
 
 				<div class="containerText"> 
-				<h2 class="dateText">02</h2>
+				<h2 class="dateText">04</h2>
 				<h2 class="dateText">30</h2>
 				</div>
-				<p class="shipmentBlockText">NEXT NODE: </p>
+				<p class="shipmentBlockText">Expected Next Shipment </p>
 
 			</div>
 
@@ -124,7 +124,7 @@
      with https://www.npmjs.com/package/@googlemaps/js-api-loader.
     -->
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiLLBv6IZkplA5ZpAlUVnuVIQEfQu6FEk&callback=initMap&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key={YOURKEY}&callback=initMap&v=weekly"
       defer
     ></script>
 
@@ -164,8 +164,10 @@ window.initMap = initMap;
       center: los_angeles,
 	  keyboardShortcuts: false,
     });
-    // The marker, positioned at Uluru
-   new google.maps.Marker({
+
+   setTimeout(() => {
+
+	new google.maps.Marker({
       position: shanghai,
       map: map,
     });
@@ -196,6 +198,9 @@ window.initMap = initMap;
   	});
 
   flightPath.setMap(map);
+
+   }, 5000)	
+
 
   }
   
