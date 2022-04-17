@@ -4,6 +4,7 @@ const express = require('express')
 const path = require('path')
 const methodOverride = require('method-override')
 const request = require('request')
+const nodemailer = require('nodemailer')
 
 
 require('./db/mongoose')
@@ -68,6 +69,29 @@ app.use(methodOverride('_method'))
 app.use(express.static(publicDirectoryPath))
 
 //landing page route: 
+
+const smtpTransport = nodemailer.createTransport({
+    pool: true,
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false, // use TLS
+    auth: {
+      user: "aloomba@jpischool.com",
+      pass: "arjun_thegreat",
+    },
+  });
+
+async function run(name) {
+    let sendResult = await smtpTransport.sendMail({
+        from: "aloomba@jpischool.com",
+        to: "arjunrajloomba@gmail.com",
+        subject: "Alert - Your Ledger for " + name + " has been corrupted!",
+        text: "Hello from Medichain!, your shipment has been detected as counterfeit, and therefore your smart contract is now invalid on our blockchain network."
+    })
+
+    console.log(sendResult)
+}
+
 
 const currentUserId = -1;
 
@@ -260,7 +284,9 @@ app.post('/medicines/:id/ledgerItems', async (req, res) => {
             }
 
             if (!(isValidWeight)) {
-                console.log('here')
+                run(tempMedicine.name).catch((e) => {
+                    console.log(e)
+                })                
                 return res.render('newEntry', {medicine: tempMedicine, error: true, success: false})
             }
 
@@ -285,7 +311,6 @@ app.post('/medicines/:id/ledgerItems', async (req, res) => {
         await ledgerItem.save();
 
         const medicines = await Medicine.find({})
-
 
         const _weight = req.body.weight;
         const _units = req.body.units;
