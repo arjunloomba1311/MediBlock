@@ -37,9 +37,20 @@ Login Page
 
 ### Ankr API
 
+We used the Ankr API to deploy our smart contracts onto a public Ethereum Blockchain network. Initially, we tested out our code with ganache, which is a test blockchain network, together with Truffle. However, Ankr helped us quickly migrate it to a public network. Below is a code snippet that helped us. 
 
-## OUR TECH STACK
+### Google Maps API 
 
-## DEVELOPMENT PROCESS
+The google maps API is used as a visualization tool to understand the real time locations of where the counterfeit medicine shipment is positioned. We used a QR code scanner code that we built using flask. This hosted data to a server using EngineX and is then scraped using js and integrated with our main application. 
+
+### OUR TECH STACK
+
+Node/Express JS, MongoDB, Solidity, Truffle, Web3-JS, Nodemailer
+
+### DEVELOPMENT PROCESS
+
+We started with setting up a backend server using the node/express framework. This set up the bare bones for our backend. We then used MongoDB to store hashed user data with npm libraries like bcrypt JS. We then started working on creating smart contracts with solidity. We initially used a local network in the form of ganache and truffle, but soon migrated to a public and more robust network in Ankr. Our team simultaneously worked on the front end of the website where we used AdobeXD to create the designs and then write up the HTML/CSS to match those designs. We faced some challenges in properly integrating the front end and the backend, such as making sure that the date is parsed in properly from Node to the EJS files that we made, and functionality like looping within an HTML document worked well. We then came back to Node JS, and defining any routes we might have left as well as **connected our solidity smart contracts together for the checks for 'weight' and 'units'** which are core to our application. Next all 3 of us worked together to scrape real time data for the coordinates and then used the 'Request' library in JS to pass the coordinates through to our Maps API.
 
 ## WHAT'S NEXT 
+
+## APPENDIX
