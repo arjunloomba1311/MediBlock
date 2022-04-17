@@ -52,8 +52,20 @@
 	<p class="bodyText"> But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.  </p>
 
 		<div class="buttonHolder">
+
+			<% if (flag == false) { %>
 			
 			<a href="/login/"><button class="logIn">Log In</button></a>
+
+			<% } %>
+
+			<% if (flag == true) { %>
+			
+				<a href="/login/"><button class="logIn">Logout</button></a>
+	
+			<% } %>
+	
+
 			<span class="signUp"><a href="#">Sign Up</a></span>
 
 	</div>

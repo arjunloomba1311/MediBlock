@@ -23,13 +23,28 @@ const LedgerSchema = new Schema({
         //     Date.now() + 7*24*60*60*1000
         // },
     },
+    location: {
+        type: String,
+        require: false,
+        default: "Los Angeles"
+    },
     weight: {
         type: Number, 
         required: true,
+        validate(value) {
+            if (value < 0) {
+                throw new Error("Weight can't be negative!")
+            }
+        }
     }, 
     units: {
         type: Number, 
         default: 2200,
+        validate(value) {
+            if (value < 0) {
+                throw new Error("Units can't be negative!")
+            }
+        }
     }
 })
 

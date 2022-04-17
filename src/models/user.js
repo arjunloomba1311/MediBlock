@@ -3,11 +3,11 @@ const validator = require('validator');
 const Schema = mongoose.Schema
 
 const userSchema = new Schema({
-    name: {
-        type: String, 
-        required: true, 
-        trim: true,
-    },
+    // name: {
+    //     type: String, 
+    //     required: true, 
+    //     trim: true,
+    // },
     email: {
         type: String, 
         required: true, 
@@ -33,7 +33,7 @@ const userSchema = new Schema({
     userType: {
         type: String,
         required: false, 
-        default: 'Supplier',
+        default: 'rawMaterial',
         minlength: 3, 
     }
 })

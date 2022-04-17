@@ -6,10 +6,52 @@
 <head>
 	
 	<link rel="stylesheet" type="text/css" href="../css/ledgerPage.css">
+    <script type="module" src="../js/index.js"></script>
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+	<!-- <script type="module" src="../js/index.js"></script> -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
+	<script>
+
+
+		// Initialize and add the map
+function initMap() {
+
+
+    // The location of Uluru
+    const uluru = { lat: -25.344, lng: 131.031 };
+	const los_angeles = {lat: <%=latitude%>, lng: <%=longitude%>}
+
+	numLocations = <%=locations.length%>
+
+	<%=locations.forEach((loc) => {
+		console.log(loc)
+	});%>
+
+
+    // The map, centered at Uluru
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 4,
+      center: los_angeles,
+	  keyboardShortcuts: false,
+    });
+    // The marker, positioned at Uluru
+   new google.maps.Marker({
+      position: uluru,
+      map: map,
+    });
+
+	new google.maps.Marker({
+      position: los_angeles,
+      map: map,
+    });
+  }
+  
+  window.initMap = initMap;
+
+	</script>
 
 </head>
 
@@ -19,7 +61,7 @@
 	
 		<div class="logoContainer"> 
 
-			<img src="../img/Icon awesome-link@2x.png">
+			<img src="/../img/Icon awesome-link@2x.png">
 			<span>MEDICHAIN</span>
 
 
@@ -28,7 +70,7 @@
 		<div class="logoContainerOne">
 
 			<span>Arjun Loomba</span> 
-			<div class="img" style="background-image: url('../img/pexels-photo-2014773@2x.png');"></div>
+			<div class="img" style="background-image: url('/../img/pexels-photo-2014773@2x.png');"></div>
 			
 
 
@@ -40,6 +82,15 @@
 
 		<label class="ledgerBlockLabel">LEDGER</label>
 
+		<div class="addFunction">
+			
+			<a href="/medicines/<%=medicine._id%>/ledgerItems/new"></span><label class="ledgerBlockLabelOne" id="add">Add</label></a>
+			<a href="/medicines"><span id="all">View All</span></a>
+
+
+		</div> 
+
+
 		<div class="ledgerBlock">
 
 			<div class="hidderDiv">
@@ -50,133 +101,30 @@
 				
                     <% for(let ledgerItem of medicine.ledgerItems) { %>
 
+						<%
+						var options = { month: 'long'};
+
+						
+// 						monthNames = [
+//       “January”, “February”, “March”,
+//       “April”, “May”, “June”, “July”,
+//       “August”, “September”, “October”,
+//       “November”, “December”
+//    ];
+						 %>
+
+
 					<tr>
 						
-						<td class="dateInfo"><%=ledgerItem.date%></td>
-						<td class="otherInfo">2020</td>
-						<td class="otherInfo"><%=ledgerItem.units%></td>
-						<td class="otherInfo"><%=ledgerItem.weight%></td>
+						<td id = "datey" class="dateInfo"> <%=ledgerItem.date.getDate()%> <%=new Intl.DateTimeFormat('en-US', options).format(ledgerItem.month)%> </td>
+						<td class="otherInfo"><%=ledgerItem.date.getFullYear()%></td>
+						<td class="otherInfo"><%=ledgerItem.units%> units</td>
+						<td class="otherInfo"><%=ledgerItem.weight%> lbs</td>
                         <td class="otherInfo"><%=ledgerItem.description%></td>
-
-
 
 					</tr>
 
                     <% } %>
-<!--  
-					<tr>
-						
-						<td class="dateInfo">29th August</td>
-						<td class="otherInfo">2020</td>
-						<td class="otherInfo">2200 Units</td>
-						<td class="otherInfo">400 Kilograms</td>
-
-
-
-					</tr>
-
-					<tr>
-						
-						<td class="dateInfo">29th August</td>
-						<td class="otherInfo">2020</td>
-						<td class="otherInfo">2200 Units</td>
-						<td class="otherInfo">400 Kilograms</td>
-
-
-
-					</tr>
-
-					<tr>
-						
-						<td class="dateInfo">29th August</td>
-						<td class="otherInfo">2020</td>
-						<td class="otherInfo">2200 Units</td>
-						<td class="otherInfo">400 Kilograms</td>
-
-
-
-					</tr>
-					
-					
-					<tr>
-						
-						<td class="dateInfo">29th August</td>
-						<td class="otherInfo">2020</td>
-						<td class="otherInfo">2200 Units</td>
-						<td class="otherInfo">400 Kilograms</td>
-
-
-
-					</tr>
-					
-					
-					<tr>
-						
-						<td class="dateInfo">29th August</td>
-						<td class="otherInfo">2020</td>
-						<td class="otherInfo">2200 Units</td>
-						<td class="otherInfo">400 Kilograms</td>
-
-
-
-					</tr>
-					
-					
-					<tr>
-						
-						<td class="dateInfo">29th August</td>
-						<td class="otherInfo">2020</td>
-						<td class="otherInfo">2200 Units</td>
-						<td class="otherInfo">400 Kilograms</td>
-
-
-
-					</tr>
-
-										<tr>
-						
-						<td class="dateInfo">29th August</td>
-						<td class="otherInfo">2020</td>
-						<td class="otherInfo">2200 Units</td>
-						<td class="otherInfo">400 Kilograms</td>
-
-
-
-					</tr>
-					
-					
-										<tr>
-						
-						<td class="dateInfo">29th August</td>
-						<td class="otherInfo">2020</td>
-						<td class="otherInfo">2200 Units</td>
-						<td class="otherInfo">400 Kilograms</td>
-
-
-
-					</tr>
-					
-										<tr>
-						
-						<td class="dateInfo">29th August</td>
-						<td class="otherInfo">2020</td>
-						<td class="otherInfo">2200 Units</td>
-						<td class="otherInfo">400 Kilograms</td>
-
-
-
-					</tr>
-
-											<tr>
-						
-						<td class="dateInfo">29th August</td>
-						<td class="otherInfo">2020</td>
-						<td class="otherInfo">2200 Units</td>
-						<td class="otherInfo">400 Kilograms</td>
-
-
-
-					</tr> -->
 					
 			</table>
 
@@ -184,14 +132,10 @@
 
 		</div>
 
-		<a href="/medicines/<%=medicine._id%>/ledgerItems/new">Add a Ledger Entry</a>
-        <br>
-        <a href="/medicines">All Medicines</a>    
-
 
 		<div class="addInfoBlock">
 
-			<label class="shipmentBlockLabel">REMINDERS</label>
+			<label id = "map" class="shipmentBlockLabel">REMINDERS</label>
 
 			<div class="shipmentBlock">
 
@@ -199,28 +143,51 @@
 				<h2 class="dateText">02</h2>
 				<h2 class="dateText">30</h2>
 				</div>
-				<p class="shipmentBlockText">NEXT SHIPMENT</p>
+				<p class="shipmentBlockText">NEXT NODE: </p>
 
 			</div>
 
-			<label class="graphBlockLabel">RANDOM STUFF</label>
+			<label class="graphBlockLabel">Track Packages</label>
 
 			<div class="graphBlock">
-
-				<img src="../img/Line chart@2x.png">
-
+				<div id="map"></div>
 			</div>
 			
 		</div>
 
-
-
-
-
 	</div>	
 
+    <!--The div element for the map -->
 
+    <!-- 
+     The `defer` attribute causes the callback to execute after the full HTML
+     document has been parsed. For non-blocking uses, avoiding race conditions,
+     and consistent behavior across browsers, consider loading using Promises
+     with https://www.npmjs.com/package/@googlemaps/js-api-loader.
+    -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiLLBv6IZkplA5ZpAlUVnuVIQEfQu6FEk&callback=initMap&v=weekly"
+      defer
+    ></script>
 
 </body>
+
+
+	<!-- <script>
+		let map;
+
+		function initMap() {
+  			map = new google.maps.Map(document.getElementById("map"), {
+    		center: { lat: -34.397, lng: 150.644 },
+    	zoom: 8,
+  		});
+}
+
+window.initMap = initMap;
+
+	</script> -->
+
+
+
 
 </html>
