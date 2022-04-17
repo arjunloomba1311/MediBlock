@@ -1,6 +1,6 @@
 # LA HACKS SUBMISSION
 
-[View our Devpost submission here] (https://google.com)
+[View Our Devpost Submission for LA hacks 2022 here](https://www.google.com)
 
 ## CONCEPT
 
